@@ -1,19 +1,45 @@
 const { Pool } = require('pg');
+const dns = require('dns');
 
-// Use DATABASE_URL from Supabase (set in .env or Render env vars)
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
-  family: 4, // Force IPv4 — Render free tier doesn't support IPv6
-});
+// Resolve hostname to IPv4 manually — Render free tier doesn't support IPv6
+async function resolveIPv4(url) {
+  return new Promise((resolve) => {
+    try {
+      const parsed = new URL(url);
+      dns.resolve4(parsed.hostname, (err, addresses) => {
+        if (err || !addresses || !addresses.length) {
+          console.log('[DB] DNS resolve4 failed, using original URL');
+          return resolve(url);
+        }
+        const ipv4Url = url.replace(parsed.hostname, addresses[0]);
+        console.log('[DB] Resolved to IPv4:', addresses[0]);
+        resolve(ipv4Url);
+      });
+    } catch (e) {
+      resolve(url);
+    }
+  });
+}
 
+let pool = null;
 
-console.log('[DB] Connecting to PostgreSQL (Supabase)...');
+console.log('[DB] Connecting to PostgreSQL...');
 
 async function getDb() {
+  if (pool) return pool;
   try {
+    const rawUrl = process.env.DATABASE_URL;
+    const connectionString = process.env.NODE_ENV === 'production'
+      ? await resolveIPv4(rawUrl)
+      : rawUrl;
+
+    pool = new Pool({
+      connectionString,
+      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+    });
+
     const client = await pool.connect();
-    console.log('[DB] ✅ Connected to Supabase PostgreSQL');
+    console.log('[DB] ✅ Connected to PostgreSQL');
     client.release();
     await initTables();
     return pool;
@@ -84,32 +110,26 @@ async function initTables() {
   console.log('[DB] ✅ Tables ready');
 }
 
-// Helper: run a query that returns all rows
 async function all(sql, params = []) {
-  // Convert SQLite ? placeholders to PostgreSQL $1, $2, ...
   let i = 0;
   const pgSql = sql.replace(/\?/g, () => `$${++i}`);
   const result = await pool.query(pgSql, params);
   return result.rows;
 }
 
-// Helper: get a single row
 async function get(sql, params = []) {
   const rows = await all(sql, params);
   return rows.length > 0 ? rows[0] : null;
 }
 
-// Helper: run insert/update/delete — returns lastInsertRowid
 async function run(sql, params = []) {
   let i = 0;
   let pgSql = sql.replace(/\?/g, () => `$${++i}`);
 
-  // For INSERT, append RETURNING id so we can get lastInsertRowid
   if (pgSql.trim().toUpperCase().startsWith('INSERT')) {
     pgSql += ' RETURNING id';
   }
 
-  // Fix SQLite-specific datetime() calls → NOW()
   pgSql = pgSql.replace(/datetime\("now"\)/gi, 'NOW()');
   pgSql = pgSql.replace(/datetime\('now'\)/gi, 'NOW()');
 
@@ -118,4 +138,4 @@ async function run(sql, params = []) {
   return { lastInsertRowid };
 }
 
-module.exports = { getDb, all, get, run, pool };
+module.exports = { getDb, all, get, run };
