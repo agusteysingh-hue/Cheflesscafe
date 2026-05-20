@@ -1,7 +1,3 @@
-// Force IPv4 — Render free tier does not support IPv6
-const dns = require('dns');
-dns.setDefaultResultOrder('ipv4first');
-
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');

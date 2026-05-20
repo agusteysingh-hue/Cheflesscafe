@@ -1,43 +1,15 @@
 const { Pool } = require('pg');
-const dns = require('dns');
 
-// Resolve hostname to IPv4 manually — Render free tier doesn't support IPv6
-async function resolveIPv4(url) {
-  return new Promise((resolve) => {
-    try {
-      const parsed = new URL(url);
-      dns.resolve4(parsed.hostname, (err, addresses) => {
-        if (err || !addresses || !addresses.length) {
-          console.log('[DB] DNS resolve4 failed, using original URL');
-          return resolve(url);
-        }
-        const ipv4Url = url.replace(parsed.hostname, addresses[0]);
-        console.log('[DB] Resolved to IPv4:', addresses[0]);
-        resolve(ipv4Url);
-      });
-    } catch (e) {
-      resolve(url);
-    }
-  });
-}
-
-let pool = null;
+// Simple direct connection — Neon PostgreSQL supports IPv4 natively
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+});
 
 console.log('[DB] Connecting to PostgreSQL...');
 
 async function getDb() {
-  if (pool) return pool;
   try {
-    const rawUrl = process.env.DATABASE_URL;
-    const connectionString = process.env.NODE_ENV === 'production'
-      ? await resolveIPv4(rawUrl)
-      : rawUrl;
-
-    pool = new Pool({
-      connectionString,
-      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
-    });
-
     const client = await pool.connect();
     console.log('[DB] ✅ Connected to PostgreSQL');
     client.release();
@@ -138,4 +110,4 @@ async function run(sql, params = []) {
   return { lastInsertRowid };
 }
 
-module.exports = { getDb, all, get, run };
+module.exports = { getDb, all, get, run, pool };
