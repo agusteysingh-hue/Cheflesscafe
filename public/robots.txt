@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# AI Crawlers — allow full indexing for AI discoverability
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+Sitemap: https://thechaidealer.com/sitemap.xml

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1262928896031587');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1262928896031587&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17995374772"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17995374772');
+    gtag('config', 'G-TMZ3HQ49BE');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0A0806">
+  <title><%= title %></title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <nav class="app-nav">
+    <div class="app-nav-inner">
+      <a href="/" class="app-nav-logo">The Chai Dealer</a>
+      <div class="app-nav-links">
+        <a href="/admin/questions" class="app-nav-link active">Q&A</a>
+        <a href="/dashboard" class="app-nav-link">Dashboard</a>
+        <a href="/logout" class="app-nav-link" style="color:var(--red-light);">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page page-wide">
+    <h1 style="font-family:var(--font-display);font-size:clamp(32px,5vw,48px);color:var(--white);margin-bottom:8px;">
+      Admin — <span style="color:var(--amber);">Q&A Management</span>
+    </h1>
+    <p style="color:var(--muted);margin-bottom:28px;font-size:14px;"><%= questions.length %> question(s) from students</p>
+
+    <% if (questions.length === 0) { %>
+      <div class="card" style="text-align:center;">
+        <p style="color:var(--muted);font-size:15px;">No questions yet. 🎉</p>
+      </div>
+    <% } %>
+
+    <% questions.forEach(function(q) { %>
+      <div class="card" style="margin-bottom:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+          <div>
+            <div style="font-weight:700;font-size:15px;color:var(--white);"><%= q.question %></div>
+            <div style="font-size:11px;color:var(--muted);margin-top:4px;">
+              By <strong><%= q.author_name %></strong> · Course: <strong style="color:var(--amber);"><%= q.course_name %></strong>
+              · <%= new Date(q.created_at).toLocaleDateString('en-IN', {day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}) %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Existing answers -->
+        <% q.answers.forEach(function(a) { %>
+          <div class="qa-answer" style="margin-top:12px;">
+            <% if (a.is_admin) { %><span class="qa-admin-badge">ADMIN</span> <% } %>
+            <span style="font-weight:600;"><%= a.author_name %></span>
+            <p style="margin-top:4px;"><%= a.answer %></p>
+          </div>
+        <% }); %>
+
+        <!-- Reply form -->
+        <div style="display:flex;gap:8px;margin-top:14px;" id="replyForm-<%= q.id %>">
+          <input type="text" class="form-input" id="replyInput-<%= q.id %>" placeholder="Type your reply..." style="flex:1;">
+          <button class="btn-full btn-amber" style="width:auto;padding:12px 20px;font-size:13px;" onclick="submitReply(<%= q.id %>)">Reply</button>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+
+  <script>
+    async function submitReply(questionId) {
+      const input = document.getElementById('replyInput-' + questionId);
+      const answer = input.value.trim();
+      if (!answer) return;
+
+      try {
+        const res = await fetch('/admin/reply', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ questionId, answer }),
+        });
+        if (res.ok) { location.reload(); }
+        else { alert('Failed to reply.'); }
+      } catch (e) { alert('Error. Try again.'); }
+    }
+  </script>
+</body>
+</html>

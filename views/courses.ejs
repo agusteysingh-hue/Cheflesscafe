@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1262928896031587');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1262928896031587&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17995374772"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17995374772');
+    gtag('config', 'G-TMZ3HQ49BE');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0A0806">
+  <title><%= title %></title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <nav class="app-nav">
+    <div class="app-nav-inner">
+      <a href="/" class="app-nav-logo">The Chai Dealer</a>
+      <div class="app-nav-links">
+        <a href="/courses" class="app-nav-link active">Courses</a>
+        <a href="/dashboard" class="app-nav-link">Dashboard</a>
+        <a href="/logout" class="app-nav-link" style="color:var(--red-light);">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page page-wide">
+    <h1 style="font-family:var(--font-display);font-size:clamp(36px,6vw,52px);color:var(--white);margin-bottom:8px;">
+      All <span style="color:var(--amber);">Courses</span>
+    </h1>
+    <p style="color:var(--muted);margin-bottom:32px;font-size:14px;">19 SOP video recipes organized by category. Click any course to start learning.</p>
+
+    <% categoryOrder.forEach(function(catName) {
+      const catCourses = categorized[catName];
+      if (!catCourses) return;
+    %>
+      <div class="category-section">
+        <h2 class="category-title"><%= catName %></h2>
+        <div class="course-grid">
+          <% catCourses.forEach(function(c) { %>
+            <a href="/course/<%= c.id %>" class="course-card">
+              <span class="course-icon"><%= c.icon %></span>
+              <div class="course-info">
+                <div class="course-name"><%= c.name %></div>
+                <div class="course-cat"><%= catName %></div>
+              </div>
+              <% if (completed.includes(c.id)) { %>
+                <span class="course-done">✓</span>
+              <% } %>
+            </a>
+          <% }); %>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</body>
+</html>

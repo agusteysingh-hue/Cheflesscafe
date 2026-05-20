@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1262928896031587');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1262928896031587&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chefless Cafe Menu System — Course Catalogue | The Chai Dealer</title>
+  <meta name="description" content="19 professional SOP video recipes for your cafe — no chef needed. Master Maggi, Sandwiches, Pasta, Tea, Coffee, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --amber: #E8921A;
+      --amber-dark: #B86F0A;
+      --amber-glow: rgba(232,146,26,0.15);
+      --bg: #0A0806;
+      --bg2: #110E09;
+      --bg3: #1A1509;
+      --card: #1C1710;
+      --border: rgba(232,146,26,0.18);
+      --white: #FAF5EC;
+      --muted: #9A8E78;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'Manrope', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      background: var(--bg2);
+      padding: 72px 24px 64px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232,146,26,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--amber-glow);
+      border: 1px solid var(--border);
+      color: var(--amber);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 8vw, 80px);
+      line-height: 1;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--amber); }
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 36px;
+      color: var(--amber);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* ── PITCH BAR ── */
+    .pitch-bar {
+      background: linear-gradient(135deg, var(--amber), var(--amber-dark));
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .pitch-bar p {
+      color: #0A0806;
+      font-weight: 800;
+      font-size: clamp(13px, 2vw, 16px);
+      letter-spacing: 0.3px;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    /* ── CATEGORY SECTION ── */
+    .category-section {
+      margin-bottom: 56px;
+    }
+    .cat-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .cat-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--amber-glow);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .cat-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: var(--white);
+    }
+    .cat-count {
+      margin-left: auto;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--amber);
+      background: var(--amber-glow);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 100px;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+    .cat-divider {
+      height: 1px;
+      background: linear-gradient(90deg, var(--border) 0%, transparent 100%);
+      margin-bottom: 24px;
+    }
+
+    /* ── COURSE GRID ── */
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .course-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      cursor: default;
+    }
+    .course-card:hover {
+      border-color: var(--amber);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(232,146,26,0.12);
+    }
+    .course-emoji {
+      width: 48px;
+      height: 48px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .course-info { flex: 1; min-width: 0; }
+    .course-name {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--white);
+      line-height: 1.4;
+    }
+    .course-type {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+    }
+    .course-tag {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--amber);
+      background: var(--amber-glow);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── WHAT YOU GET SECTION ── */
+    .benefits {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px 40px;
+      margin-bottom: 60px;
+    }
+    .benefits h2 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .benefits h2 span { color: var(--amber); }
+    .benefits-sub {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 36px;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .benefit-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      transition: border-color 0.25s;
+    }
+    .benefit-item:hover { border-color: var(--amber); }
+    .benefit-icon { font-size: 28px; margin-bottom: 10px; }
+    .benefit-title { font-weight: 800; font-size: 14px; margin-bottom: 6px; }
+    .benefit-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── CTA ── */
+    .cta-section {
+      text-align: center;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 56px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(232,146,26,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      margin-bottom: 12px;
+    }
+    .cta-section h2 span { color: var(--amber); }
+    .cta-section p {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--amber), var(--amber-dark));
+      color: #0A0806;
+      font-family: var(--font-body);
+      font-weight: 900;
+      font-size: 16px;
+      padding: 16px 48px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(232,146,26,0.35);
+    }
+    .cta-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    footer a { color: var(--amber); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero-stats { gap: 24px; }
+      .benefits { padding: 32px 20px; }
+      .cta-section { padding: 40px 20px; }
+      .cat-header { flex-wrap: wrap; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate { animation: fadeUp 0.6s ease both; }
+    .animate-1 { animation-delay: 0.1s; }
+    .animate-2 { animation-delay: 0.2s; }
+    .animate-3 { animation-delay: 0.3s; }
+
+    /* ── PRINT STYLES ── */
+    @media print {
+      body { background: #fff; color: #111; }
+      .hero, .pitch-bar, .cta-section, footer { display: block !important; }
+      .course-card { border: 1px solid #ddd; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">📋 Official Course Catalogue 2026</div>
+    <h1 class="animate animate-1">
+      Chefless Cafe<br /><span>Menu System</span>
+    </h1>
+    <p class="hero-sub animate animate-2">
+      Run a profitable cafe with <strong>zero chef dependency</strong>. Train your staff with 19 professional SOP video recipes — everything from Maggi to Pasta, Tea to Sandwiches.
+    </p>
+    <div class="hero-stats animate animate-3">
+      <div class="stat">
+        <div class="stat-num">19</div>
+        <div class="stat-label">SOP Recipes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Categories</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Lifetime Access</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Chef Needed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PITCH BAR -->
+  <div class="pitch-bar">
+    <p>🔥 Everything a cafe needs — Beverages, Snacks, Meals — all in one system. Train any staff member in hours, not weeks.</p>
+  </div>
+
+  <!-- COURSE LIST -->
+  <div class="container">
+
+    <!-- WHAT YOU GET -->
+    <div class="benefits animate animate-1">
+      <h2>What's <span>Included</span></h2>
+      <p class="benefits-sub">Everything you need to run a consistent, profitable cafe operation</p>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="benefit-icon">🎬</div>
+          <div class="benefit-title">HD SOP Videos</div>
+          <div class="benefit-desc">Step-by-step video recipes with exact quantities and techniques — zero guesswork.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">📱</div>
+          <div class="benefit-title">Mobile-Ready Platform</div>
+          <div class="benefit-desc">Staff can learn on any phone or tablet — no special equipment required.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">♾️</div>
+          <div class="benefit-title">Lifetime Access</div>
+          <div class="benefit-desc">Buy once, access forever. Re-train new staff anytime without extra cost.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">⚡</div>
+          <div class="benefit-title">Quick Training</div>
+          <div class="benefit-desc">Any new hire can be making consistent menu items within a single day.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">💬</div>
+          <div class="benefit-title">Q&A Support</div>
+          <div class="benefit-desc">Ask questions directly inside the course and get answers from the team.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">💰</div>
+          <div class="benefit-title">High-Margin Menu</div>
+          <div class="benefit-desc">Every recipe is designed for maximum profitability with low-cost, easy-to-source ingredients.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ STARTER ═══ -->
+    <div class="category-section">
+      <div class="cat-header">
+        <div class="cat-icon">🍽️</div>
+        <div class="cat-title">Starter</div>
+        <div class="cat-count">1 Recipe</div>
+      </div>
+      <div class="cat-divider"></div>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-emoji">🌽</div>
+          <div class="course-info">
+            <div class="course-name">Butter Corn Masala</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ TEA & COFFEE ═══ -->
+    <div class="category-section">
+      <div class="cat-header">
+        <div class="cat-icon">☕</div>
+        <div class="cat-title">Tea &amp; Coffee</div>
+        <div class="cat-count">4 Recipes</div>
+      </div>
+      <div class="cat-divider"></div>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-emoji">🌹</div>
+          <div class="course-info">
+            <div class="course-name">Rose Tea</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+        <div class="course-card">
+          <div class="course-emoji">🍋</div>
+          <div class="course-info">
+            <div class="course-name">Lemon Tea</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+        <div class="course-card">
+          <div class="course-emoji">☕</div>
+          <div class="course-info">
+            <div class="course-name">Hot Coffee</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+        <div class="course-card">
+          <div class="course-emoji">🧊</div>
+          <div class="course-info">
+            <div class="course-name">Cold Coffee</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ THIRST QUENCHERS ═══ -->
+    <div class="category-section">
+      <div class="cat-header">
+        <div class="cat-icon">🍹</div>
+        <div class="cat-title">Thirst Quenchers</div>
+        <div class="cat-count">2 Recipes</div>
+      </div>
+      <div class="cat-divider"></div>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-emoji">🍹</div>
+          <div class="course-info">
+            <div class="course-name">Virgin Mojito</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+        <div class="course-card">
+          <div class="course-emoji">🍉</div>
+          <div class="course-info">
+            <div class="course-name">Fruit Mojito</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ MAGGI ═══ -->
+    <div class="category-section">
+      <div class="cat-header">
+        <div class="cat-icon">🍜</div>
+        <div class="cat-title">Maggi Course</div>
+        <div class="cat-count">4 Recipes</div>
+      </div>
+      <div class="cat-divider"></div>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-emoji">🍜</div>
+          <div class="course-info">
+            <div class="course-name">Plain Masala Maggi</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+        <div class="course-card">
+          <div class="course-emoji">🌶️</div>
+          <div class="course-info">
+            <div class="course-name">Veg Spicy Maggi</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+        <div class="course-card">
+          <div class="course-emoji">🧀</div>
+          <div class="course-info">
+            <div class="course-name">Cheese &amp; Corn Maggi</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+        <div class="course-card">
+          <div class="course-emoji">🧄</div>
+          <div class="course-info">
+            <div class="course-name">Chilli Garlic Maggi</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SANDWICH ═══ -->
+    <div class="category-section">
+      <div class="cat-header">
+        <div class="cat-icon">🥪</div>
+        <div class="cat-title">Sandwich</div>
+        <div class="cat-count">4 Recipes</div>
+      </div>
+      <div class="cat-divider"></div>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-emoji">🥪</div>
+          <div class="course-info">
+            <div class="course-name">Veg &amp; Cheese Sandwich</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+        <div class="course-card">
+          <div class="course-emoji">🌽</div>
+          <div class="course-info">
+            <div class="course-name">Cheese &amp; Corn Sandwich</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+        <div class="course-card">
+          <div class="course-emoji">🫕</div>
+          <div class="course-info">
+            <div class="course-name">Paneer Grilled Sandwich</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+        <div class="course-card">
+          <div class="course-emoji">🥬</div>
+          <div class="course-info">
+            <div class="course-name">Palak &amp; Corn Sandwich</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PASTA ═══ -->
+    <div class="category-section">
+      <div class="cat-header">
+        <div class="cat-icon">🍝</div>
+        <div class="cat-title">Pasta Course</div>
+        <div class="cat-count">2 Recipes</div>
+      </div>
+      <div class="cat-divider"></div>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-emoji">🍝</div>
+          <div class="course-info">
+            <div class="course-name">White Sauce Pasta</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+        <div class="course-card">
+          <div class="course-emoji">🍅</div>
+          <div class="course-info">
+            <div class="course-name">Red Sauce Pasta</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ BUN ═══ -->
+    <div class="category-section">
+      <div class="cat-header">
+        <div class="cat-icon">🍞</div>
+        <div class="cat-title">Bun Course</div>
+        <div class="cat-count">2 Recipes</div>
+      </div>
+      <div class="cat-divider"></div>
+      <div class="course-grid">
+        <div class="course-card">
+          <div class="course-emoji">🍞</div>
+          <div class="course-info">
+            <div class="course-name">Bun Maska &amp; Masala Bun</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+        <div class="course-card">
+          <div class="course-emoji">🥟</div>
+          <div class="course-info">
+            <div class="course-name">Bun Samosa</div>
+            <div class="course-type">SOP Video Recipe</div>
+          </div>
+          <div class="course-tag">SOP</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2>Ready to Go <span>Chefless?</span></h2>
+      <p>Join cafe owners across India who have eliminated chef dependency and reduced costs — without sacrificing quality.</p>
+      <a href="https://thechaidealer.com" class="cta-btn" target="_blank" rel="noopener">
+        Get Full Access →
+      </a>
+      <div class="cta-note">🔒 One-time payment · Lifetime access · Instant delivery</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <a href="https://thechaidealer.com" target="_blank">The Chai Dealer</a> · Chefless Cafe Menu System · All rights reserved.</p>
+    <p style="margin-top:8px;">Questions? WhatsApp us at <a href="https://wa.me/917042401496" target="_blank">+91 70424 01496</a></p>
+  </footer>
+
+</body>
+</html>

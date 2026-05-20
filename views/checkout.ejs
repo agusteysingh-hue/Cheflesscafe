@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17995374772"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17995374772');
+    gtag('config', 'G-TMZ3HQ49BE');
+  </script>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1262928896031587');
+  fbq('track', 'PageView');
+  fbq('track', 'InitiateCheckout', {value: 999, currency: 'INR'});
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1262928896031587&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0A0806">
+  <title>
+    <%= title %>
+  </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css">
+  <style>
+    body {
+      background: #0A0806;
+    }
+
+    .checkout-page {
+      min-height: 100vh;
+      padding: 64px 16px 48px;
+      display: grid;
+      place-items: start center;
+    }
+
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    /* ── LEFT PANEL: Social proof & value ── */
+    .checkout-left {}
+
+    .co-brand {
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: var(--amber);
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .co-tagline {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    /* Mini headline */
+    .co-headline {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 42px);
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .co-headline span {
+      color: var(--amber);
+    }
+
+    .co-sub {
+      font-size: 14px;
+      color: var(--cream2);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* What you get list */
+    .co-includes {
+      background: rgba(22, 19, 16, 0.7);
+      border: 1px solid rgba(232, 146, 26, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .co-includes-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+
+    .co-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 13px;
+      color: var(--cream2);
+    }
+
+    .co-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .co-item-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .co-item-text strong {
+      color: var(--white);
+      display: block;
+      font-size: 13px;
+      margin-bottom: 1px;
+    }
+
+    .co-item-text span {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Testimonial */
+    .co-testi {
+      background: rgba(232, 146, 26, 0.04);
+      border: 1px solid rgba(232, 146, 26, 0.12);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin-bottom: 16px;
+    }
+
+    .co-testi-stars {
+      color: var(--amber);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .co-testi-text {
+      font-size: 13px;
+      color: var(--cream2);
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .co-testi-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .co-testi-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--amber-dark), var(--amber));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--dark);
+      flex-shrink: 0;
+    }
+
+    .co-testi-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--cream);
+    }
+
+    .co-testi-role {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    /* ── RIGHT PANEL: Form ── */
+    .checkout-right {
+      position: sticky;
+      top: 72px;
+    }
+
+    .co-form-card {
+      background: rgba(22, 19, 16, 0.95);
+      border: 1px solid rgba(232, 146, 26, 0.12);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Price header */
+    .co-price-header {
+      background: linear-gradient(135deg, #1A1410, #201A12);
+      border-bottom: 1px solid rgba(232, 146, 26, 0.1);
+      padding: 20px 24px;
+      text-align: center;
+    }
+
+    .co-off-pill {
+      display: inline-block;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      color: #69f0ae;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+
+    .co-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .co-price-orig {
+      font-size: 18px;
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .co-price-main {
+      font-family: var(--font-display);
+      font-size: 56px;
+      color: var(--amber);
+      line-height: 1;
+    }
+
+    .co-price-note {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* Countdown */
+    .co-countdown {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 12px;
+      background: rgba(239, 68, 68, 0.06);
+      border: 1px solid rgba(239, 68, 68, 0.15);
+      border-radius: 8px;
+      padding: 8px 14px;
+    }
+
+    .co-countdown-label {
+      font-size: 11px;
+      color: #EF9F9F;
+      font-weight: 700;
+    }
+
+    .co-cd-time {
+      font-family: var(--font-display);
+      font-size: 18px;
+      color: #EF4444;
+      letter-spacing: 0.05em;
+    }
+
+    /* Form body */
+    .co-form-body {
+      padding: 22px 24px;
+    }
+
+    .co-step-label {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .co-step-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--amber);
+      color: var(--dark);
+      font-size: 10px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Input with icon */
+    .co-input-wrap {
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    .co-input-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .co-input {
+      width: 100%;
+      padding: 14px 14px 14px 42px;
+      background: var(--dark3);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius);
+      color: var(--cream);
+      font-size: 14px;
+      font-family: var(--font-body);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .co-input:focus {
+      border-color: rgba(232, 146, 26, 0.4);
+      box-shadow: 0 0 0 3px rgba(232, 146, 26, 0.08);
+    }
+
+    .co-input::placeholder {
+      color: var(--muted2);
+    }
+
+    /* Pay button */
+    .co-pay-btn {
+      width: 100%;
+      padding: 17px;
+      background: linear-gradient(135deg, #E8921A, #B86F0A);
+      color: var(--dark);
+      font-weight: 900;
+      font-size: 16px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-family: var(--font-body);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 24px rgba(232, 146, 26, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .co-pay-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      to {
+        left: 100%;
+      }
+    }
+
+    .co-pay-btn:hover {
+      box-shadow: 0 6px 32px rgba(232, 146, 26, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .co-pay-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .co-pay-btn:disabled::after {
+      display: none;
+    }
+
+    /* Microcopy under button */
+    .co-secure-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .co-secure-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* Social proof bar */
+    .co-social-proof {
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .co-avatars {
+      display: flex;
+    }
+
+    .co-av {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid var(--dark2);
+      background: linear-gradient(135deg, var(--amber-dark), var(--amber));
+      color: var(--dark);
+      font-size: 8px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: -6px;
+    }
+
+    .co-av:first-child {
+      margin-left: 0;
+    }
+
+    .co-social-text {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .co-social-text strong {
+      color: var(--amber);
+    }
+
+    /* Error */
+    .co-error {
+      display: none;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      color: #EF9F9F;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    /* Spinner */
+    .co-spinner {
+      width: 20px;
+      height: 20px;
+      border: 3px solid transparent;
+      border-top-color: var(--dark);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ── Course Catalogue (Checkout) ── */
+    .co-catalogue {
+      background: rgba(22, 19, 16, 0.7);
+      border: 1px solid rgba(232, 146, 26, 0.12);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    /* Hidden by default — shown only in mobile media query */
+    .co-catalogue-mobile {
+      display: none;
+    }
+
+    .co-catalogue-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+    }
+
+    .co-catalogue-header:hover {
+      background: rgba(232, 146, 26, 0.05);
+    }
+
+    .co-catalogue-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .co-catalogue-title span {
+      background: rgba(232, 146, 26, 0.12);
+      border: 1px solid rgba(232, 146, 26, 0.2);
+      color: var(--amber);
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 100px;
+    }
+
+    .co-cat-chevron {
+      color: var(--muted);
+      font-size: 14px;
+      transition: transform 0.3s;
+    }
+
+    .co-cat-chevron.open {
+      transform: rotate(180deg);
+    }
+
+    .co-catalogue-body {
+      display: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .co-catalogue-body.open {
+      display: block;
+    }
+
+    .co-cat-group {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .co-cat-group:last-child {
+      border-bottom: none;
+    }
+
+    .co-cat-group-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px 8px;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .co-cat-group-label .cat-emoji {
+      font-size: 14px;
+    }
+
+    .co-recipe-list {
+      padding: 0 18px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .co-recipe-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--cream2);
+      padding: 4px 0;
+    }
+
+    .co-recipe-item::before {
+      content: '▸';
+      color: var(--amber);
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 750px) {
+      .checkout-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .checkout-right {
+        position: static;
+        order: -1;
+      }
+
+      .checkout-left {
+        order: 1;
+      }
+
+      .co-form-card {
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      }
+
+      .checkout-page {
+        padding: 56px 0 40px;
+      }
+
+      .co-left-inner {
+        padding: 0 16px;
+        margin-top: 16px;
+      }
+
+      .co-price-main {
+        font-size: 46px;
+      }
+
+      .co-headline {
+        font-size: 26px;
+      }
+
+      /* Hide original catalogue in left column on mobile — shown via mobile clone below */
+      .co-catalogue-original {
+        display: none;
+      }
+
+      /* Show mobile catalogue clone */
+      .co-catalogue-mobile {
+        display: block;
+        margin: 12px 16px 0;
+      }
+
+      /* Compress form card height on mobile so catalogue is above the fold */
+      .co-secure-row {
+        display: none;
+      }
+      .co-form-body > div[style*="rgba(34,197,94"] {
+        display: none;
+      }
+      .co-form-body > div[style*="text-align:center"] {
+        display: none;
+      }
+      .co-price-note {
+        font-size: 11px;
+      }
+      .co-form-body {
+        padding: 16px 16px 12px;
+      }
+      .co-price-header {
+        padding: 12px 16px 10px;
+      }
+      .co-input-wrap {
+        margin-bottom: 10px !important;
+      }
+      .co-pay-btn {
+        padding: 14px;
+      }
+    }
+
+    @media (min-width: 751px) {
+      .co-left-inner {
+        padding-top: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Minimal nav -->
+  <nav class="app-nav">
+    <div class="app-nav-inner">
+      <a href="/" class="app-nav-logo" style="display:flex;align-items:center;gap:8px;">
+        <span>The Chai Dealer</span>
+        <span style="font-size:11px;color:#7A6050;font-weight:700;letter-spacing:0.06em;">·</span>
+        <span style="color:#E8921A;font-weight:800;letter-spacing:0.03em;">CuisineCraft</span>
+      </a>
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--muted);">
+        🔒 100% Secure Checkout
+      </div>
+    </div>
+  </nav>
+
+  <div class="checkout-page">
+    <div class="checkout-grid">
+
+      <!-- ═══ LEFT: Value & proof ═══ -->
+      <div class="checkout-left">
+        <div class="co-left-inner">
+
+          <div style="margin-bottom:20px;">
+            <div class="co-headline">
+              You're One Step Away From A <span>Chef-Free Cafe</span>
+            </div>
+            <p class="co-sub">Join 500+ cafe owners who've locked their taste, cut chef dependency and built a
+              consistent menu with 19 SOP video recipes.</p>
+          </div>
+
+          <!-- What's included -->
+          <div class="co-includes">
+            <div class="co-includes-title">✦ Everything You Get Today</div>
+            <div class="co-item">
+              <span class="co-item-icon">🎬</span>
+              <div class="co-item-text">
+                <strong>19 SOP Video Recipes</strong>
+                <span>Starter · Tea · Maggi · Sandwich · Pasta · Bun · Mojitos</span>
+              </div>
+            </div>
+            <div class="co-item">
+              <span class="co-item-icon">⚖️</span>
+              <div class="co-item-text">
+                <strong>Exact Gram Measurements</strong>
+                <span>No guesswork — consistent taste every single time</span>
+              </div>
+            </div>
+            <div class="co-item">
+              <span class="co-item-icon">🧮</span>
+              <div class="co-item-text">
+                <strong>Portion & Costing Calculator</strong>
+                <span>Know your exact profit per dish. End waste forever.</span>
+              </div>
+            </div>
+            <div class="co-item">
+              <span class="co-item-icon">🖨️</span>
+              <div class="co-item-text">
+                <strong>Printable Kitchen Playbooks</strong>
+                <span>Stick on kitchen wall — staff follows without videos</span>
+              </div>
+            </div>
+            <div class="co-item">
+              <span class="co-item-icon">⚡</span>
+              <div class="co-item-text">
+                <strong>3-Day Staff Training System</strong>
+                <span>Any unskilled hire making perfect dishes in 72 hrs</span>
+              </div>
+            </div>
+            <div class="co-item">
+              <span class="co-item-icon">♾️</span>
+              <div class="co-item-text">
+                <strong>Lifetime Access — No Monthly Fees</strong>
+                <span>Pay once. Train every new hire for years.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonials -->
+          <div class="co-testi" id="testiBox">
+            <div class="co-testi-stars">★★★★★</div>
+            <p class="co-testi-text" id="testiText">"I was paying ₹25k/month to a chef. Trained two helpers in 3 days using these SOPs. Saving lakhs now."</p>
+            <div class="co-testi-author">
+              <div class="co-testi-avatar" id="testiInitials">MS</div>
+              <div>
+                <div class="co-testi-name" id="testiName">Mayank Sharma</div>
+                <div class="co-testi-role" id="testiRole">Outlet Owner, Mumbai</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="co-testi" style="margin-top:12px;">
+            <div class="co-testi-stars">★★★★★</div>
+            <p class="co-testi-text">"My chef left during Diwali rush. My helper ran the entire kitchen using the SOPs. Not a single complaint from customers."</p>
+            <div class="co-testi-author">
+              <div class="co-testi-avatar" style="background:linear-gradient(135deg,#1a3a5c,#3b82f6);color:#fff;">DV</div>
+              <div>
+                <div class="co-testi-name">Deepak Verma</div>
+                <div class="co-testi-role">Cafe Owner, Delhi</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="co-testi" style="margin-top:12px;">
+            <div class="co-testi-stars">★★★★★</div>
+            <p class="co-testi-text">"Was skeptical about a ₹999 course replacing a ₹25k chef. Three months in — food quality is better and more consistent than before."</p>
+            <div class="co-testi-author">
+              <div class="co-testi-avatar" style="background:linear-gradient(135deg,#5c1a3a,#ec4899);color:#fff;">KS</div>
+              <div>
+                <div class="co-testi-name">Kavita Singh</div>
+                <div class="co-testi-role">Restaurant Owner, Jaipur</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Value vs price -->
+          <div
+            style="background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.12);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px;">
+            <div
+              style="font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;">
+              💰 The Math Is Simple</div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;">
+              <span style="color:var(--cream2);">Chef salary (monthly)</span>
+              <span style="color:var(--red-light);font-weight:700;">₹20,000 – ₹30,000</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;">
+              <span style="color:var(--cream2);">This SOP system (one-time)</span>
+              <span style="color:var(--green);font-weight:700;">₹999</span>
+            </div>
+            <div style="height:1px;background:rgba(255,255,255,0.06);margin:10px 0;"></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;">
+              <span style="color:var(--cream2);">You save every year</span>
+              <span style="color:var(--green-light);font-weight:800;font-size:15px;">₹2–3 Lakh+</span>
+            </div>
+          </div>
+
+          <!-- ✦ Course Catalogue — all 19 SOPs ✦ (hidden on mobile, clone shown above) -->
+          <div class="co-catalogue co-catalogue-original">
+            <div class="co-catalogue-header" onclick="toggleCatalogue()" id="catHeader">
+              <div class="co-catalogue-title">
+                📋 Full Course Catalogue
+                <span>19 SOP Recipes</span>
+              </div>
+              <div class="co-cat-chevron" id="catChevron">▼</div>
+            </div>
+            <div class="co-catalogue-body" id="catBody">
+
+              <!-- Starter -->
+              <div class="co-cat-group">
+                <div class="co-cat-group-label"><span class="cat-emoji">🍽️</span> Starter</div>
+                <div class="co-recipe-list">
+                  <div class="co-recipe-item">Butter Corn Masala</div>
+                </div>
+              </div>
+
+              <!-- Tea & Coffee -->
+              <div class="co-cat-group">
+                <div class="co-cat-group-label"><span class="cat-emoji">☕</span> Tea &amp; Coffee</div>
+                <div class="co-recipe-list">
+                  <div class="co-recipe-item">Rose Tea</div>
+                  <div class="co-recipe-item">Lemon Tea</div>
+                  <div class="co-recipe-item">Hot Coffee</div>
+                  <div class="co-recipe-item">Cold Coffee</div>
+                </div>
+              </div>
+
+              <!-- Thirst Quenchers -->
+              <div class="co-cat-group">
+                <div class="co-cat-group-label"><span class="cat-emoji">🍹</span> Thirst Quenchers</div>
+                <div class="co-recipe-list">
+                  <div class="co-recipe-item">Virgin Mojito</div>
+                  <div class="co-recipe-item">Fruit Mojito</div>
+                </div>
+              </div>
+
+              <!-- Maggi -->
+              <div class="co-cat-group">
+                <div class="co-cat-group-label"><span class="cat-emoji">🍜</span> Maggi Course</div>
+                <div class="co-recipe-list">
+                  <div class="co-recipe-item">Plain Masala Maggi</div>
+                  <div class="co-recipe-item">Veg Spicy Maggi</div>
+                  <div class="co-recipe-item">Cheese &amp; Corn Maggi</div>
+                  <div class="co-recipe-item">Chilli Garlic Maggi</div>
+                </div>
+              </div>
+
+              <!-- Sandwich -->
+              <div class="co-cat-group">
+                <div class="co-cat-group-label"><span class="cat-emoji">🥪</span> Sandwich</div>
+                <div class="co-recipe-list">
+                  <div class="co-recipe-item">Veg &amp; Cheese Sandwich</div>
+                  <div class="co-recipe-item">Cheese &amp; Corn Sandwich</div>
+                  <div class="co-recipe-item">Paneer Grilled Sandwich</div>
+                  <div class="co-recipe-item">Palak &amp; Corn Sandwich</div>
+                </div>
+              </div>
+
+              <!-- Pasta -->
+              <div class="co-cat-group">
+                <div class="co-cat-group-label"><span class="cat-emoji">🍝</span> Pasta Course</div>
+                <div class="co-recipe-list">
+                  <div class="co-recipe-item">White Sauce Pasta</div>
+                  <div class="co-recipe-item">Red Sauce Pasta</div>
+                </div>
+              </div>
+
+              <!-- Bun -->
+              <div class="co-cat-group">
+                <div class="co-cat-group-label"><span class="cat-emoji">🍞</span> Bun Course</div>
+                <div class="co-recipe-list">
+                  <div class="co-recipe-item">Bun Maska &amp; Masala Bun</div>
+                  <div class="co-recipe-item">Bun Samosa</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- end catalogue -->
+
+        </div>
+      </div>
+
+      <!-- ═══ RIGHT: Form ═══ -->
+      <div class="checkout-right">
+        <div class="co-form-card">
+
+          <!-- Price header -->
+          <div class="co-price-header">
+            <div class="co-off-pill">🔥 86% OFF — First 50 Seats Only!</div>
+            <div style="background:linear-gradient(135deg,#e53935,#c62828);color:#fff;font-size:11px;font-weight:700;letter-spacing:0.06em;text-align:center;padding:5px 10px;border-radius:6px;margin-bottom:8px;">⚡ LIMITED PERIOD OFFER — Price goes up after 50 enrollments</div>
+            <div class="co-price-row">
+              <span class="co-price-orig">₹6,999</span>
+              <span class="co-price-main">₹999</span>
+            </div>
+            <div class="co-price-note">One-time · Lifetime Access · 19 SOP Videos</div>
+
+          </div>
+
+          <!-- Form body -->
+          <div class="co-form-body">
+            <div class="co-step-label">
+              <div class="co-step-dot">1</div>
+              Enter your details to enroll
+            </div>
+
+            <div id="coError" class="co-error"></div>
+
+            <div class="co-input-wrap">
+              <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:6px;">Your Name</label>
+              <input type="text" class="co-input" id="coName" placeholder="Full Name" required autocomplete="name" style="padding-left:14px;">
+            </div>
+            <div class="co-input-wrap">
+              <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:6px;">Email (for login details)</label>
+              <input type="email" class="co-input" id="coEmail" placeholder="Email Address" required autocomplete="email" style="padding-left:14px;">
+            </div>
+            <div class="co-input-wrap" style="margin-bottom:18px;">
+              <label style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:6px;">WhatsApp (we'll send access here)</label>
+              <input type="tel" class="co-input" id="coPhone" placeholder="WhatsApp Number" required autocomplete="tel" maxlength="10" pattern="[0-9]{10}" style="padding-left:14px;">
+            </div>
+
+            <button class="co-pay-btn" id="payBtn" onclick="startPayment()">
+              <span id="payText">Enroll Now &amp; Get Instant Access →</span>
+              <div class="co-spinner" id="paySpinner"></div>
+            </button>
+
+            <div style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.18);border-radius:8px;padding:12px 14px;margin:12px 0;">
+              <p style="font-size:12px;color:#86efac;line-height:1.7;margin:0;text-align:center;">
+                ✅ After payment, you'll receive login details instantly on your email and WhatsApp. Access all 19 SOP videos within 2 minutes of enrolling.
+              </p>
+            </div>
+
+            <div class="co-secure-row">
+              <span class="co-secure-item">🔒 256-bit SSL</span>
+              <span class="co-secure-item">⚡ Instant Access</span>
+              <span class="co-secure-item">📱 UPI · Cards · Netbanking</span>
+            </div>
+
+            <div
+              style="text-align:center;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.04);">
+              <p style="font-size:11px;color:var(--muted);line-height:1.6;">
+                Secure payment via <strong style="color:var(--cream2);">Razorpay</strong>.<br>
+                Already enrolled? <a href="/login" style="color:var(--amber);font-weight:700;">Login here</a>
+              </p>
+            </div>
+          </div>
+
+          <!-- Social proof footer -->
+          <div class="co-social-proof">
+            <div class="co-avatars">
+              <div class="co-av">MS</div>
+              <div class="co-av" style="background:linear-gradient(135deg,#1a5c3a,#22c55e);color:#fff;">DV</div>
+              <div class="co-av" style="background:linear-gradient(135deg,#3a1a5c,#8b5cf6);color:#fff;">KS</div>
+              <div class="co-av" style="background:linear-gradient(135deg,#5c1a1a,#ef4444);color:#fff;">PP</div>
+            </div>
+            <p class="co-social-text">
+              <strong>500+ cafe owners</strong> enrolled.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- ✦ Mobile-only Course Catalogue (appears below form, above fold) ✦ -->
+        <div class="co-catalogue co-catalogue-mobile">
+          <div class="co-catalogue-header" onclick="toggleCatalogueMobile()" id="catHeaderMobile">
+            <div class="co-catalogue-title">
+              📋 Full Course Catalogue
+              <span>19 SOP Recipes</span>
+            </div>
+            <div class="co-cat-chevron" id="catChevronMobile">▼</div>
+          </div>
+          <div class="co-catalogue-body" id="catBodyMobile">
+            <div class="co-cat-group">
+              <div class="co-cat-group-label"><span class="cat-emoji">🍽️</span> Starter</div>
+              <div class="co-recipe-list">
+                <div class="co-recipe-item">Butter Corn Masala</div>
+              </div>
+            </div>
+            <div class="co-cat-group">
+              <div class="co-cat-group-label"><span class="cat-emoji">☕</span> Tea &amp; Coffee</div>
+              <div class="co-recipe-list">
+                <div class="co-recipe-item">Rose Tea</div>
+                <div class="co-recipe-item">Lemon Tea</div>
+                <div class="co-recipe-item">Hot Coffee</div>
+                <div class="co-recipe-item">Cold Coffee</div>
+              </div>
+            </div>
+            <div class="co-cat-group">
+              <div class="co-cat-group-label"><span class="cat-emoji">🍹</span> Thirst Quenchers</div>
+              <div class="co-recipe-list">
+                <div class="co-recipe-item">Virgin Mojito</div>
+                <div class="co-recipe-item">Fruit Mojito</div>
+              </div>
+            </div>
+            <div class="co-cat-group">
+              <div class="co-cat-group-label"><span class="cat-emoji">🍜</span> Maggi Course</div>
+              <div class="co-recipe-list">
+                <div class="co-recipe-item">Plain Masala Maggi</div>
+                <div class="co-recipe-item">Veg Spicy Maggi</div>
+                <div class="co-recipe-item">Cheese &amp; Corn Maggi</div>
+                <div class="co-recipe-item">Chilli Garlic Maggi</div>
+              </div>
+            </div>
+            <div class="co-cat-group">
+              <div class="co-cat-group-label"><span class="cat-emoji">🥪</span> Sandwich</div>
+              <div class="co-recipe-list">
+                <div class="co-recipe-item">Veg &amp; Cheese Sandwich</div>
+                <div class="co-recipe-item">Cheese &amp; Corn Sandwich</div>
+                <div class="co-recipe-item">Paneer Grilled Sandwich</div>
+                <div class="co-recipe-item">Palak &amp; Corn Sandwich</div>
+              </div>
+            </div>
+            <div class="co-cat-group">
+              <div class="co-cat-group-label"><span class="cat-emoji">🍝</span> Pasta Course</div>
+              <div class="co-recipe-list">
+                <div class="co-recipe-item">White Sauce Pasta</div>
+                <div class="co-recipe-item">Red Sauce Pasta</div>
+              </div>
+            </div>
+            <div class="co-cat-group">
+              <div class="co-cat-group-label"><span class="cat-emoji">🍞</span> Bun Course</div>
+              <div class="co-recipe-list">
+                <div class="co-recipe-item">Bun Maska &amp; Masala Bun</div>
+                <div class="co-recipe-item">Bun Samosa</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end mobile catalogue -->
+
+        <!-- Guarantee -->
+        <div style="text-align:center;margin-top:14px;padding:0 8px;">
+          <p style="font-size:13px;color:var(--cream2);line-height:1.7;margin-bottom:6px;">
+            🔐 Not sure? Chat with us on WhatsApp first — we'll answer every question before you pay.
+          </p>
+          <p style="font-size:12px;color:var(--muted);line-height:1.6;margin:0;">
+            <a href="https://wa.me/917042401496" target="_blank" style="color:var(--amber);font-weight:700;font-size:14px;">+91 7042401496</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    // ─── Countdown Timer ───
+    function initCountdown() {
+      const key = 'co_deadline';
+      let deadline = localStorage.getItem(key);
+      if (!deadline || Date.now() > parseInt(deadline)) {
+        deadline = Date.now() + (23 * 3600 + 59 * 60 + 59) * 1000;
+        localStorage.setItem(key, deadline);
+      }
+      setInterval(() => {
+        const diff = parseInt(deadline) - Date.now();
+        if (diff <= 0) { document.getElementById('cdTimer').textContent = '00:00:00'; return; }
+        const h = Math.floor(diff / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('cdTimer').textContent =
+          String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+      }, 1000);
+    }
+    initCountdown();
+
+    // ─── Course Catalogue Toggle ───
+    function toggleCatalogue() {
+      const body = document.getElementById('catBody');
+      const chevron = document.getElementById('catChevron');
+      const isOpen = body.classList.toggle('open');
+      chevron.classList.toggle('open', isOpen);
+    }
+    function toggleCatalogueMobile() {
+      const body = document.getElementById('catBodyMobile');
+      const chevron = document.getElementById('catChevronMobile');
+      const isOpen = body.classList.toggle('open');
+      chevron.classList.toggle('open', isOpen);
+    }
+    // ─── Rotating Testimonials ───
+    const testis = [
+      { text: '"I was paying ₹25k/month to a chef. Trained two helpers in 3 days. Saving lakhs now."', init: 'MS', name: 'Mayank Sharma', role: 'Outlet Owner, Mumbai' },
+      { text: '"My Zomato rating went from 3.8 to 4.5 in two months. Taste is finally consistent!"', init: 'AJ', name: 'Amit Joshi', role: 'Cloud Kitchen, Hyderabad' },
+      { text: '"Chef left during Diwali rush. My helper ran the kitchen alone using the SOPs. Zero complaints."', init: 'DV', name: 'Deepak Verma', role: 'Cafe Owner, Delhi' },
+      { text: '"Opened my second outlet with zero stress. Just gave SOPs to new team — ready in 3 days."', init: 'PP', name: 'Priya Patel', role: 'Multi-outlet Owner, Ahmedabad' },
+    ];
+    let ti = 0;
+    setInterval(() => {
+      ti = (ti + 1) % testis.length;
+      const t = testis[ti];
+      const box = document.getElementById('testiBox');
+      box.style.opacity = '0';
+      setTimeout(() => {
+        document.getElementById('testiText').textContent = t.text;
+        document.getElementById('testiInitials').textContent = t.init;
+        document.getElementById('testiName').textContent = t.name;
+        document.getElementById('testiRole').textContent = t.role;
+        box.style.transition = 'opacity 0.4s';
+        box.style.opacity = '1';
+      }, 300);
+    }, 5000);
+
+    // ─── Live enrolled count ───
+    const counts = ['2 people enrolled today', '3 people enrolled today', '5 people enrolled in the last hour', '1 person just enrolled'];
+    document.getElementById('recentCount').textContent = counts[Math.floor(Math.random() * counts.length)];
+
+    // ─── Phone formatting ───
+    document.getElementById('coPhone').addEventListener('input', function () {
+      this.value = this.value.replace(/\D/g, '').slice(0, 10);
+    });
+
+    // ─── Error/loading helpers ───
+    function showError(msg) {
+      const el = document.getElementById('coError');
+      el.textContent = msg;
+      el.style.display = 'block';
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    function clearError() { document.getElementById('coError').style.display = 'none'; }
+    function setLoading(on) {
+      document.getElementById('payText').style.display = on ? 'none' : 'flex';
+      document.getElementById('paySpinner').style.display = on ? 'block' : 'none';
+      document.getElementById('payBtn').disabled = on;
+    }
+
+    // ─── Payment flow ───
+    async function startPayment() {
+      // Fire begin_checkout event — wrapped so it never blocks payment
+      try {
+        gtag('event', 'begin_checkout', {
+          value: 999,
+          currency: 'INR'
+        });
+      } catch(e) {}
+
+      clearError();
+      const name = document.getElementById('coName').value.trim();
+      const email = document.getElementById('coEmail').value.trim();
+      const phone = document.getElementById('coPhone').value.trim();
+
+      if (!name) { showError('Please enter your full name.'); return; }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('Please enter a valid email address.'); return; }
+      if (!phone || !/^\d{10}$/.test(phone)) { showError('Please enter a valid 10-digit WhatsApp number.'); return; }
+
+      setLoading(true);
+
+      try {
+        const res = await fetch('/api/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, phone }),
+        });
+        const data = await res.json();
+
+        if (!res.ok) { showError(data.error || 'Something went wrong. Please try again.'); setLoading(false); return; }
+
+        const rzp = new Razorpay({
+          key: data.keyId,
+          amount: data.amount,
+          currency: data.currency,
+          name: 'The Chai Dealer',
+          description: 'Chefless Cafe Menu System — 19 SOP Videos',
+          order_id: data.orderId,
+          handler: async (response) => {
+            setLoading(true);
+            try {
+              // 15 second timeout — never spin forever
+              const controller = new AbortController();
+              const timeout = setTimeout(() => controller.abort(), 15000);
+
+              const vRes = await fetch('/api/verify-payment', {
+                method: 'POST',
+                credentials: 'same-origin',
+                headers: { 'Content-Type': 'application/json' },
+                signal: controller.signal,
+                body: JSON.stringify({
+                  razorpay_order_id: response.razorpay_order_id,
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_signature: response.razorpay_signature,
+                  name, email, phone,
+                }),
+              });
+              clearTimeout(timeout);
+              const result = await vRes.json();
+              if (result.success) {
+                // Save credentials for Thank You page
+                sessionStorage.setItem('waUrl', result.whatsappUrl || '');
+                sessionStorage.setItem('userPassword', result.customerPassword || '');
+                sessionStorage.setItem('userEmail', email);
+                sessionStorage.setItem('userName', name);
+                if (result.whatsappUrl) {
+                  window.open(result.whatsappUrl, '_blank');
+                }
+                const tokenParam = result.loginToken ? `?token=${result.loginToken}` : '';
+                window.location.href = '/thankyou' + tokenParam;
+              } else {
+                showError(result.error || 'Verification failed. Contact support.');
+                setLoading(false);
+              }
+            } catch (e) {
+              // Payment already done — redirect anyway
+              console.error('Verify error:', e);
+              window.location.href = '/thankyou';
+            }
+          },
+          prefill: { name, email, contact: '91' + phone },
+          theme: { color: '#E8921A' },
+          modal: { ondismiss: () => setLoading(false) },
+        });
+        rzp.open();
+        setLoading(false);
+      } catch (e) {
+        showError('Network error. Please check your connection and try again.');
+        setLoading(false);
+      }
+    }
+  </script>
+</body>
+
+</html>

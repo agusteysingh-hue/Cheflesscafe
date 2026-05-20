@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17995374772"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17995374772');
+    gtag('config', 'G-TMZ3HQ49BE');
+  </script>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1262928896031587');
+  fbq('track', 'PageView');
+  fbq('track', 'Purchase', {value: 999, currency: 'INR'});
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1262928896031587&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0A0806">
+  <title><%= title %></title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css">
+  <script>
+    gtag('event', 'purchase', {
+      transaction_id: Date.now().toString(),
+      value: 999,
+      currency: 'INR'
+    });
+  </script>
+</head>
+<body>
+  <nav class="app-nav"><div class="app-nav-inner"><a href="/" class="app-nav-logo" style="display:flex;align-items:center;gap:8px;"><span>The Chai Dealer</span><span style="font-size:11px;color:#7A6050;font-weight:700;">·</span><span style="color:#E8921A;font-weight:800;letter-spacing:0.03em;">CuisineCraft</span></a></div></nav>
+
+  <div class="page page-center">
+    <div class="card" style="width:100%;max-width:480px;text-align:center;">
+
+      <!-- Success check -->
+      <div class="thankyou-check">✓</div>
+      <h1 class="card-title" style="color:var(--green-light);">Payment Successful!</h1>
+      <p class="card-subtitle" style="margin-bottom:24px;">
+        Welcome to the Chefless Cafe Menu System, <strong style="color:var(--amber);">Chef!</strong>
+      </p>
+
+      <!-- Credentials box — shows actual credentials if available -->
+      <div id="credBox" style="background:var(--dark3);border:1px solid rgba(232,146,26,0.12);border-radius:var(--radius);padding:18px;margin-bottom:20px;text-align:left;">
+        <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;font-weight:800;">🔑 Your Login Credentials</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:14px;">
+            <span style="color:var(--amber);width:70px;flex-shrink:0;font-weight:700;">Email</span>
+            <span id="credEmail" style="color:var(--cream);font-weight:600;font-family:monospace;background:var(--dark4);padding:6px 10px;border-radius:6px;flex:1;word-break:break-all;">—</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:14px;">
+            <span style="color:var(--amber);width:70px;flex-shrink:0;font-weight:700;">Password</span>
+            <span id="credPass" style="color:var(--cream);font-weight:600;font-family:monospace;background:var(--dark4);padding:6px 10px;border-radius:6px;flex:1;">—</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:14px;">
+            <span style="color:var(--amber);width:70px;flex-shrink:0;font-weight:700;">Login</span>
+            <a href="https://courses.thechaidealer.com/login" style="color:var(--amber);font-weight:600;font-size:13px;">courses.thechaidealer.com/login</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp CTA — always visible -->
+      <div id="waSection" style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:var(--radius);padding:16px;margin-bottom:20px;">
+        <p style="font-size:13px;color:var(--cream2);margin-bottom:12px;">
+          📲 Save your credentials — send to your WhatsApp:
+        </p>
+        <a id="waBtn" href="#" target="_blank"
+          style="display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;font-weight:800;font-size:15px;padding:14px 24px;border-radius:10px;text-decoration:none;transition:all 0.2s;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.845L0 24l6.335-1.507A11.946 11.946 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.806 9.806 0 01-5.001-1.367l-.36-.213-3.757.984.999-3.648-.234-.374A9.78 9.78 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+          </svg>
+          Send Credentials to My WhatsApp
+        </a>
+      </div>
+
+      <!-- Dashboard / Courses links -->
+      <p style="font-size:13px;color:var(--cream2);margin-bottom:16px;">You're already logged in! Start learning now:</p>
+      <a href="/dashboard" class="btn-full btn-amber" style="margin-bottom:10px;">Go to Dashboard →</a>
+      <a href="/courses" class="btn-full btn-outline">Start Learning — View All 19 Courses</a>
+
+      <p style="font-size:11px;color:var(--muted2);margin-top:20px;">
+        Need help? Call/WhatsApp: <a href="tel:+917042401496" style="color:var(--amber);">+91 7042401496</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Load credentials from sessionStorage
+    const userEmail = sessionStorage.getItem('userEmail');
+    const userPassword = sessionStorage.getItem('userPassword');
+    const userName = sessionStorage.getItem('userName');
+    const waUrl = sessionStorage.getItem('waUrl');
+
+    // Show credentials
+    if (userEmail) document.getElementById('credEmail').textContent = userEmail;
+    if (userPassword) document.getElementById('credPass').textContent = userPassword;
+
+    // WhatsApp button
+    const waBtn = document.getElementById('waBtn');
+    if (waUrl) {
+      waBtn.href = waUrl;
+    } else if (userEmail && userPassword) {
+      // Build WhatsApp URL from credentials
+      const msg = `🎉 *Chefless Cafe Menu System - Login Details*\n\n🔗 Login: https://courses.thechaidealer.com/login\n📧 Email: ${userEmail}\n🔑 Password: ${userPassword}\n\nSave this message!`;
+      waBtn.href = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+    } else {
+      document.getElementById('waSection').style.display = 'none';
+    }
+
+    // Clean up
+    sessionStorage.removeItem('waUrl');
+    sessionStorage.removeItem('userPassword');
+    sessionStorage.removeItem('userEmail');
+    sessionStorage.removeItem('userName');
+  </script>
+</body>
+</html>

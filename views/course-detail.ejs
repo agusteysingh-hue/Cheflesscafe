@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1262928896031587');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1262928896031587&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17995374772"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17995374772');
+    gtag('config', 'G-TMZ3HQ49BE');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0A0806">
+  <title><%= title %></title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css">
+  <style>
+    /* ── COURSE DETAIL LAYOUT ── */
+    .course-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 88px 24px 40px;
+    }
+
+    /* ─ LEFT: video + Q&A ─ */
+    .course-main {}
+
+    .course-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .course-icon-big { font-size: 32px; flex-shrink: 0; }
+    .course-title-block h1 {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 4vw, 36px);
+      color: var(--white);
+      line-height: 1.05;
+    }
+    .course-cat-tag {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 4px;
+    }
+
+    /* Video */
+    .video-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(232,146,26,0.08);
+      margin-bottom: 0;
+    }
+    .video-aspect { position: relative; padding-top: 56.25%; }
+    .video-aspect iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+    /* Q&A section — right under video */
+    .qa-block {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      border-top: none;
+      padding: 24px;
+    }
+    .qa-block-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .qa-block-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      color: var(--white);
+      letter-spacing: 0.03em;
+    }
+    .qa-count-badge {
+      background: rgba(232,146,26,0.1);
+      border: 1px solid rgba(232,146,26,0.2);
+      color: var(--amber);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    /* Ask question box */
+    .ask-box {
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 24px;
+      transition: border-color 0.2s;
+    }
+    .ask-box:focus-within { border-color: rgba(232,146,26,0.3); }
+    .ask-box-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    .ask-textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 14px;
+      resize: none;
+      line-height: 1.6;
+      min-height: 70px;
+    }
+    .ask-textarea::placeholder { color: var(--muted2); }
+    .ask-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+      gap: 8px;
+    }
+
+    /* Q&A thread */
+    .qa-list { display: flex; flex-direction: column; gap: 0; }
+    .qa-item {
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .qa-item:last-child { border-bottom: none; }
+
+    .qa-q-row { display: flex; gap: 12px; align-items: flex-start; }
+    .qa-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--amber-dark), var(--amber));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; color: var(--dark); flex-shrink: 0;
+    }
+    .qa-avatar.admin-av {
+      background: linear-gradient(135deg, #1a3a1a, #22c55e);
+      color: var(--white);
+    }
+    .qa-bubble { flex: 1; }
+    .qa-bubble-meta {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;
+    }
+    .qa-author-name { font-size: 13px; font-weight: 700; color: var(--cream); }
+    .qa-admin-pill {
+      background: rgba(34,197,94,0.15);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: #69f0ae;
+      font-size: 9px; font-weight: 800;
+      padding: 2px 8px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .qa-time { font-size: 11px; color: var(--muted); }
+    .qa-question-text {
+      font-size: 14px; color: var(--cream2); line-height: 1.6;
+    }
+
+    /* Answers under question */
+    .qa-answers { margin-top: 12px; margin-left: 48px; display: flex; flex-direction: column; gap: 10px; }
+    .qa-answer-item { display: flex; gap: 10px; align-items: flex-start; }
+    .qa-answer-bubble {
+      flex: 1;
+      background: rgba(34,197,94,0.05);
+      border: 1px solid rgba(34,197,94,0.1);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+    }
+    .qa-answer-text { font-size: 13px; color: var(--cream2); line-height: 1.6; }
+
+    /* Empty state */
+    .qa-empty {
+      text-align: center; padding: 32px 16px; color: var(--muted);
+      font-size: 14px;
+    }
+    .qa-empty-icon { font-size: 32px; margin-bottom: 8px; }
+
+    /* ─ RIGHT SIDEBAR ─ */
+    .course-sidebar {
+      position: sticky;
+      top: 88px;
+    }
+    .sidebar-card {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .sidebar-section {
+      padding: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .sidebar-section:last-child { border-bottom: none; }
+    .sidebar-label {
+      font-size: 10px; font-weight: 800; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: 12px; color: var(--muted); margin-bottom: 20px;
+      display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
+    }
+    .breadcrumb a { color: var(--muted); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--amber); }
+    .breadcrumb-sep { opacity: 0.4; }
+
+    /* Lesson nav */
+    .lesson-nav { display: flex; flex-direction: column; gap: 8px; }
+
+    /* Playlist in sidebar */
+    .playlist-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px; border-radius: 8px; cursor: pointer;
+      text-decoration: none; color: var(--cream2); font-size: 13px;
+      transition: background 0.2s;
+    }
+    .playlist-item:hover { background: rgba(255,255,255,0.04); }
+    .playlist-item.current {
+      background: rgba(232,146,26,0.08);
+      border: 1px solid rgba(232,146,26,0.15);
+      color: var(--amber);
+      font-weight: 700;
+    }
+    .playlist-num {
+      font-size: 11px; color: var(--muted); font-weight: 700;
+      min-width: 20px; text-align: center;
+    }
+    .playlist-icon { font-size: 16px; flex-shrink: 0; }
+    .playlist-name { flex: 1; line-height: 1.3; }
+    .playlist-done { color: var(--green); font-size: 13px; flex-shrink: 0; }
+
+    /* ─ MOBILE ─ */
+    @media (max-width: 900px) {
+      .course-layout {
+        grid-template-columns: 1fr;
+        padding: 72px 16px 32px;
+        gap: 16px;
+      }
+      .course-sidebar { position: static; }
+      .qa-answers { margin-left: 0; }
+    }
+    @media (max-width: 480px) {
+      .qa-block { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="app-nav">
+    <div class="app-nav-inner">
+      <a href="/" class="app-nav-logo">The Chai Dealer</a>
+      <div class="app-nav-links">
+        <a href="/courses" class="app-nav-link">All Courses</a>
+        <a href="/dashboard" class="app-nav-link">Dashboard</a>
+        <a href="/logout" class="app-nav-link" style="color:var(--red-light);">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="course-layout">
+
+    <!-- ═══ LEFT: VIDEO + Q&A ═══ -->
+    <div class="course-main">
+
+      <!-- Breadcrumb -->
+      <div class="breadcrumb">
+        <a href="/courses">Courses</a>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color:var(--amber);"><%= course.category %></span>
+        <span class="breadcrumb-sep">›</span>
+        <span style="color:var(--cream2);"><%= course.name %></span>
+      </div>
+
+      <!-- Course title -->
+      <div class="course-header">
+        <span class="course-icon-big"><%= course.icon %></span>
+        <div class="course-title-block">
+          <h1><%= course.name %></h1>
+          <div class="course-cat-tag"><%= course.category %></div>
+        </div>
+      </div>
+
+      <!-- VIDEO PLAYER -->
+      <div class="video-wrap">
+        <div class="video-aspect">
+          <iframe
+            src="https://player.vimeo.com/video/<%= course.vimeoId %>?badge=0&autopause=0&player_id=0&app_id=58479"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+            referrerpolicy="strict-origin-when-cross-origin"
+            title="<%= course.name %>">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- ══ Q&A FORUM — right under video ══ -->
+      <div class="qa-block">
+        <div class="qa-block-header">
+          <div class="qa-block-title">💬 Q&A Forum</div>
+          <div class="qa-count-badge"><%= questions.length %> Questions</div>
+        </div>
+
+        <!-- Ask box -->
+        <div class="ask-box" id="askBox">
+          <div class="ask-box-label">Ask a question about this recipe</div>
+          <textarea
+            class="ask-textarea"
+            id="qaInput"
+            placeholder="e.g. What can I substitute for this ingredient? How do I scale this for 50 portions?"
+            rows="3"
+          ></textarea>
+          <div class="ask-actions">
+            <button class="btn-full btn-amber" style="width:auto;padding:10px 24px;font-size:13px;" onclick="submitQuestion(<%= course.id %>)" id="askBtn">
+              Post Question
+            </button>
+          </div>
+        </div>
+
+        <div id="qaSuccess" class="alert alert-success" style="display:none;margin-bottom:16px;">
+          ✓ Question posted! Admin will reply soon.
+        </div>
+
+        <!-- Thread -->
+        <div class="qa-list">
+          <% if (questions.length === 0) { %>
+            <div class="qa-empty">
+              <div class="qa-empty-icon">🙋</div>
+              <p>No questions yet. Be the first to ask!</p>
+            </div>
+          <% } %>
+
+          <% questions.forEach(function(q) {
+            const initials = q.author_name ? q.author_name.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2) : '?';
+          %>
+            <div class="qa-item">
+              <!-- Question -->
+              <div class="qa-q-row">
+                <div class="qa-avatar"><%= initials %></div>
+                <div class="qa-bubble">
+                  <div class="qa-bubble-meta">
+                    <span class="qa-author-name"><%= q.author_name %></span>
+                    <span class="qa-time"><%= new Date(q.created_at).toLocaleDateString('en-IN', {day:'numeric',month:'short',year:'numeric'}) %></span>
+                  </div>
+                  <div class="qa-question-text"><%= q.question %></div>
+                </div>
+              </div>
+
+              <!-- Answers -->
+              <% if (q.answers && q.answers.length > 0) { %>
+                <div class="qa-answers">
+                  <% q.answers.forEach(function(a) { %>
+                    <div class="qa-answer-item">
+                      <div class="qa-avatar admin-av">TCD</div>
+                      <div class="qa-answer-bubble">
+                        <div class="qa-bubble-meta">
+                          <span class="qa-author-name" style="color:var(--green-light);">The Chai Dealer</span>
+                          <% if (a.is_admin) { %><span class="qa-admin-pill">Admin</span><% } %>
+                          <span class="qa-time"><%= new Date(a.created_at).toLocaleDateString('en-IN', {day:'numeric',month:'short',year:'numeric'}) %></span>
+                        </div>
+                        <div class="qa-answer-text"><%= a.answer %></div>
+                      </div>
+                    </div>
+                  <% }); %>
+                </div>
+              <% } %>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ RIGHT SIDEBAR ═══ -->
+    <div class="course-sidebar">
+      <div class="sidebar-card">
+
+        <!-- Mark complete + nav -->
+        <div class="sidebar-section">
+          <div class="sidebar-label">Your Progress</div>
+          <% if (isCompleted) { %>
+            <div class="btn-full btn-green" style="pointer-events:none;opacity:0.85;margin-bottom:10px;">✓ Completed</div>
+          <% } else { %>
+            <button class="btn-full btn-amber" id="completeBtn" onclick="markComplete(<%= course.id %>)" style="margin-bottom:10px;">
+              ☑ Mark as Complete
+            </button>
+          <% } %>
+          <div class="lesson-nav">
+            <% if (prev) { %>
+              <a href="/course/<%= prev.id %>" class="btn-full btn-outline" style="font-size:13px;padding:10px;">← <%= prev.name %></a>
+            <% } %>
+            <% if (next) { %>
+              <a href="/course/<%= next.id %>" class="btn-full btn-amber" style="font-size:13px;padding:10px;"><%= next.name %> →</a>
+            <% } %>
+          </div>
+        </div>
+
+        <!-- Course playlist -->
+        <div class="sidebar-section">
+          <div class="sidebar-label">All Lessons</div>
+          <div style="max-height:420px;overflow-y:auto;margin:-4px;">
+            <% categoryOrder.forEach(function(cat) { %>
+              <div style="padding:8px 12px 4px;font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;"><%= cat %></div>
+              <% coursesByCategory[cat].forEach(function(c, i) { %>
+                <a href="/course/<%= c.id %>" class="playlist-item <%= c.id === course.id ? 'current' : '' %>">
+                  <span class="playlist-icon"><%= c.icon %></span>
+                  <span class="playlist-name"><%= c.name %></span>
+                </a>
+              <% }); %>
+            <% }); %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    async function markComplete(courseId) {
+      const btn = document.getElementById('completeBtn');
+      if (!btn) return;
+      btn.disabled = true;
+      btn.innerHTML = '⏳ Saving...';
+      try {
+        const res = await fetch('/api/mark-complete', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ courseId }),
+        });
+        if (res.ok) {
+          btn.innerHTML = '✓ Completed';
+          btn.classList.remove('btn-amber');
+          btn.classList.add('btn-green');
+          btn.style.pointerEvents = 'none';
+        }
+      } catch (e) {
+        btn.innerHTML = '☑ Mark as Complete';
+        btn.disabled = false;
+      }
+    }
+
+    async function submitQuestion(courseId) {
+      const input = document.getElementById('qaInput');
+      const btn = document.getElementById('askBtn');
+      const question = input.value.trim();
+      if (!question) {
+        input.focus();
+        document.getElementById('askBox').style.borderColor = 'rgba(239,68,68,0.4)';
+        setTimeout(() => document.getElementById('askBox').style.borderColor = '', 1500);
+        return;
+      }
+      btn.disabled = true;
+      btn.innerHTML = '⏳ Posting...';
+      try {
+        const res = await fetch('/api/question', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ courseId, question }),
+        });
+        if (res.ok) {
+          input.value = '';
+          document.getElementById('qaSuccess').style.display = 'block';
+          btn.innerHTML = 'Post Question';
+          btn.disabled = false;
+          setTimeout(() => location.reload(), 1500);
+        } else {
+          const d = await res.json();
+          alert(d.error || 'Failed to post. Try again.');
+          btn.innerHTML = 'Post Question';
+          btn.disabled = false;
+        }
+      } catch (e) {
+        btn.innerHTML = 'Post Question';
+        btn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>

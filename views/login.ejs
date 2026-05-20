@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17995374772"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17995374772');
+    gtag('config', 'G-TMZ3HQ49BE');
+  </script>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1262928896031587');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1262928896031587&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0A0806">
+  <title><%= title %></title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <nav class="app-nav"><div class="app-nav-inner"><a href="/" class="app-nav-logo" style="display:flex;align-items:center;gap:8px;"><span>The Chai Dealer</span><span style="font-size:11px;color:#7A6050;font-weight:700;">·</span><span style="color:#E8921A;font-weight:800;letter-spacing:0.03em;">CuisineCraft</span></a></div></nav>
+
+  <div class="page page-center">
+    <div class="card" style="width:100%;max-width:420px;">
+      <h1 class="card-title">Login</h1>
+      <p class="card-subtitle">Access your SOP courses and dashboard</p>
+
+      <% if (typeof success !== 'undefined' && success) { %>
+        <div class="alert alert-success"><%= success %></div>
+      <% } %>
+      <% if (error) { %>
+        <div class="alert alert-error"><%= error %></div>
+      <% } %>
+
+      <form action="/api/login" method="POST">
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" name="email" class="form-input" placeholder="your@email.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" name="password" class="form-input" placeholder="Enter your password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn-full btn-amber" style="margin-top:8px;">Login →</button>
+      </form>
+
+      <div class="link-center">
+        <a href="/forgot-password" class="link-muted">Forgot your password?</a>
+      </div>
+
+      <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.04);text-align:center;">
+        <p style="font-size:12px;color:var(--muted);">Don't have an account?</p>
+        <a href="/checkout" style="font-weight:700;font-size:14px;">Enroll Now — ₹999 🔥 →</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
