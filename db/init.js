@@ -4,7 +4,9 @@ const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  family: 4, // Force IPv4 — Render free tier doesn't support IPv6
 });
+
 
 console.log('[DB] Connecting to PostgreSQL (Supabase)...');
 
