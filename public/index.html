@@ -43,8 +43,8 @@ src="https://www.facebook.com/tr?id=1262928896031587&ev=PageView&noscript=1"
 <!-- Preconnect for speed -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://player.vimeo.com">
-<link rel="preconnect" href="https://i.vimeocdn.com">
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://img.youtube.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 
@@ -326,10 +326,10 @@ src="https://www.facebook.com/tr?id=1262928896031587&ev=PageView&noscript=1"
     <div class="hero-video-container animate-fade-up" data-delay="250">
       <div class="video-container" id="videoSection">
         <div class="video-iframe-wrap" id="videoFrame">
-          <iframe src="" id="vimeoIframe" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" referrerpolicy="strict-origin-when-cross-origin" title="Bun Maska SOP — Course Sample Lesson" loading="lazy"></iframe>
+          <iframe src="" id="ytIframe" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen title="Bun Maska SOP — Course Sample Lesson" loading="lazy"></iframe>
         </div>
         <div class="video-thumb-wrap" id="videoThumb" onclick="playVideo()">
-          <img id="vimeoThumbImg" src="https://vumbnail.com/1172990752.jpg" alt="Watch a sample SOP lesson from the course — Bun Maska">
+          <img id="ytThumbImg" src="https://img.youtube.com/vi/Qt2JkL7E7X0/maxresdefault.jpg" alt="Watch a sample SOP lesson from the course — Bun Maska">
           <div class="video-play-btn">
             <div class="play-tri"></div>
           </div>
@@ -811,25 +811,7 @@ src="https://www.facebook.com/tr?id=1262928896031587&ev=PageView&noscript=1"
   <a href="/checkout" class="btn-sticky">Enroll Now →</a>
 </div>
 
-<script src="https://player.vimeo.com/api/player.js"></script>
 <script src="script.js" defer></script>
-<script>
-  // Load native Vimeo thumbnail via oEmbed API
-  (function loadVimeoThumb() {
-    const img = document.getElementById('vimeoThumbImg');
-    if (!img) return;
-    fetch('https://vimeo.com/api/oembed.json?url=https%3A//vimeo.com/1172990752&width=1280')
-      .then(r => r.json())
-      .then(data => {
-        if (data && data.thumbnail_url) {
-          // Use highest-res version by stripping size suffix
-          const hd = data.thumbnail_url.replace(/_\d+x\d+(\.jpg)?$/, '.jpg');
-          img.src = hd;
-        }
-      })
-      .catch(() => { /* fallback vumbnail src stays */ });
-  })();
-</script>
 <script>
   // Auth-aware navigation
   fetch('/api/me', { credentials: 'include' })

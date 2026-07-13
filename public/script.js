@@ -59,19 +59,19 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// ─── VIDEO PLAYER (optimized for speed) ───
+// ─── VIDEO PLAYER ───
 function playVideo() {
-  const iframe = document.getElementById('vimeoIframe');
+  const iframe = document.getElementById('ytIframe');
   const frameWrap = document.getElementById('videoFrame');
   const thumbWrap = document.getElementById('videoThumb');
 
   if (iframe && frameWrap && thumbWrap) {
-    // Use optimal params: autoplay, muted for mobile autoplay policy, quality auto
-    iframe.src = 'https://player.vimeo.com/video/1172990752?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479&quality=auto&dnt=1&transparent=0';
+    iframe.src = 'https://www.youtube.com/embed/Qt2JkL7E7X0?autoplay=1&rel=0&modestbranding=1';
     frameWrap.classList.add('active');
     thumbWrap.style.display = 'none';
   }
 }
+
 
 // ─── FAQ ───
 function toggleFaq(btn) {
