@@ -122,30 +122,46 @@ router.post('/verify-payment', async (req, res) => {
 
 // LOGIN
 router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  const email = (req.body.email || '').trim().toLowerCase();
+  const password = (req.body.password || '').trim();
+
+  if (!email || !password) {
+    return res.render('login', { title: 'Login', error: 'Please enter email and password.' });
+  }
 
   // Admin login: check against env vars directly
-  if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
+  const adminEmail = (process.env.ADMIN_EMAIL || '').trim().toLowerCase();
+  if (email === adminEmail && password === process.env.ADMIN_PASSWORD) {
     req.session.userId = 0;
     req.session.userName = 'Admin';
     req.session.userEmail = email;
     req.session.isAdmin = true;
-    console.log('[LOGIN] ✅ Admin logged in via env credentials');
+    console.log('[LOGIN] ✅ Admin logged in');
     return req.session.save(() => res.redirect('/dashboard'));
   }
 
   // Regular user login: check DB
-  const user = await get('SELECT * FROM users WHERE email = ?', [email]);
-  if (!user || !bcrypt.compareSync(password, user.password_hash)) {
-    return res.render('login', { title: 'Login', error: 'Invalid email or password.' });
+  try {
+    const user = await get('SELECT * FROM users WHERE LOWER(email) = ?', [email]);
+    console.log('[LOGIN] DB lookup for', email, '→', user ? 'found' : 'not found');
+    if (!user) {
+      return res.render('login', { title: 'Login', error: 'Invalid email or password.' });
+    }
+    const passwordMatch = bcrypt.compareSync(password, user.password_hash);
+    console.log('[LOGIN] Password match:', passwordMatch);
+    if (!passwordMatch) {
+      return res.render('login', { title: 'Login', error: 'Invalid email or password.' });
+    }
+    req.session.userId = user.id;
+    req.session.userName = user.name;
+    req.session.userEmail = user.email;
+    return req.session.save(() => res.redirect('/dashboard'));
+  } catch (err) {
+    console.error('[LOGIN] DB error:', err.message);
+    return res.render('login', { title: 'Login', error: 'Login failed. Please try again in a moment.' });
   }
-
-  req.session.userId = user.id;
-  req.session.userName = user.name;
-  req.session.userEmail = user.email;
-
-  return req.session.save(() => res.redirect('/dashboard'));
 });
+
 
 // FORGOT PASSWORD
 router.post('/forgot-password', async (req, res) => {
