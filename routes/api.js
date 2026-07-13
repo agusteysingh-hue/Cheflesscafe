@@ -159,7 +159,7 @@ router.post('/forgot-password', async (req, res) => {
   const expires = new Date(Date.now() + 3600000).toISOString();
   await run('UPDATE users SET reset_token = ?, reset_expires = ? WHERE id = ?', [token, expires, user.id]);
 
-  const resetUrl = `https://courses.thechaidealer.com/reset-password/${token}`;
+  const resetUrl = `${process.env.SITE_URL || 'https://cheflesscafe.onrender.com'}/reset-password/${token}`;
   let resetEmailSent = false;
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
