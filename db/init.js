@@ -4,7 +4,16 @@ const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+  max: 5,                      // max connections
+  idleTimeoutMillis: 30000,    // close idle connections after 30s
+  connectionTimeoutMillis: 5000, // timeout if can't connect in 5s
 });
+
+// Handle pool errors gracefully — don't crash the server
+pool.on('error', (err) => {
+  console.error('[DB] Pool error (will retry on next query):', err.message);
+});
+
 
 console.log('[DB] Connecting to PostgreSQL...');
 
